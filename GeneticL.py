@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
 Author : tharindra galahena (inf0_warri0r)
 Project: GeneticL - L-System generator using genetic algorithms
