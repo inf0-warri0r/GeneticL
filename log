@@ -1,0 +1,119 @@
+2013-05-08 17:20:06.195923
+--NEW POPULATION--generation = 0
+X=-F[X]+F[-FX]F 30.0
+X=[[[X]X]-FX][-F+F]F 0.0
+X=[[[X]X]-FX][-F+F]F 20.0
+X=[X]-F[+F-F]F 0.0
+X=-F[-F+F]F 0.0
+X=-F[X]+F[-FX]-F[+F-F]F 10.0
+X=[-F[X]+F]F 30.0
+X=-F[[X][-FX]F] 20.0
+X=[+F+FX]F 50.0
+X=[-F+F]F 0.0
+
+2013-05-08 17:31:36.523611
+generation = 1
+X=[[-F]]F 50.0
+X=[[-FX]X]F 40.0
+X=[[-FX]-FX]-FF 4.0
+X=[[+FF]] 10.0
+X=-F-F+FF 0.0
+X=[[[-FX]X]-F+FX]F 40.0
+X=[-F+FXF+FF] 30.0
+X=[-]F 40.0
+X=[-FX]-FF 10.0
+X=[[[X]X]X]-FF 0.0
+
+2013-05-08 17:33:58.891340
+generation = 2
+X=[[[-FX]X]-F+FX]F 0.0
+X=[-F+FXF+FF] 40.0
+X=[[[[-FX]X]-F+FX]X]F 10.0
+X=[[-FX]F] 0.0
+X=[[[[-FX]X]-F+X]X]F 0.0
+X=[[-FFX]F] 80.0
+X=[[[-FX]X]]F 50.0
+X=[[-FX]X-F+FX]F 0.0
+X=[X]+FF 10.0
+X=[X]+F[[]]F 0.0
+
+2013-05-08 17:36:26.339123
+generation = 3
+X=[[[-FX]X]-F+FX]F 50.0
+X=[-F+FXF+FF] 40.0
+X=[[[[-FX]X]-F+FX]]F 0.0
+X=[[[-FX]X]F] 0.0
+X=[[[-FX]X]-F+FX]F 50.0
+X=[-F+FXF+FF] 10.0
+X=[FXF+FF] 10.0
+X=[-F+[[[[-FX]X]-F+X]X]F] 40.0
+X=-F[+F-F]F 0.0
+X=[[X][X]+F-F]F 0.0
+
+2013-05-08 19:16:19.698331
+generation = 4
+X=+F-FF 50.0
+X=[+FX][]F 40.0
+X=[+FX][-F]F 50.0
+X=[-FX][X]-FF 0.0
+X=[-FX+F-FF] 30.0
+X=[-F]F 20.0
+X=[+F-F+FX]F 0.0
+X=-F[X]+F-FF 20.0
+X=-F+F+F[+F]F 0.0
+X=+F-F-FF 20.0
+
+2013-05-08 19:18:02.577484
+generation = 5
+X=[+FX][]F 0.0
+X=[-FX][X]-FF 30.0
+X=-F[X]+F-FF 30.0
+X=+F-F-FF 20.0
+X=[+FX][-F]F 30.0
+X=[+FX]F 0.0
+X=[-FX+F-FF] 10.0
+X=[+F-F+FX]F 20.0
+X=[[-F+FX]X][-F]F 0.0
+X=+F-F-F-F+FF 20.0
+
+2013-05-08 19:29:06.897191
+
+--NEW POPULATION--
+
+generation = 0
+X=[[[X]-FX]+F-FX]F 30.0
+X=[[[X]+FX]X]+F+F-FF 20.0
+X=[[[X[X][-F-F+F]F]]] 0.0
+X=[[-FX]+F-FX]F 20.0
+X=[[[X]-FX]+F-F] 20.0
+X=[[[[X]+FX]X]+F+F-FFX]F 0.0
+X=[[X][-F-F+FX]+F-FX]F 20.0
+X=[[[X]-F]F] 60.0
+X=+F[+F]F 10.0
+X=[[X]-FX]+F-F+F+FF 0.0
+
+2013-05-08 19:31:08.240909
+generation = 1
+X=[[[X]-FX]+F-FX]F 40.0
+X=[[-FX]+F-FX]F 20.0
+X=[[[[[X]+FX]X]+]+F+F-FFX]F 20.0
+X=[[[[X]+FX]XF+F-FF]] 30.0
+X=[[[X]-FX]+F-FX]F 20.0
+X=[[X]-FX]+F-F+F+FF 30.0
+X=[[[X[X][-F+F-FX]F]]] 40.0
+X=[[[[[X][-F-F+FX]-F+F]F]]] 0.0
+X=[+FX]-F-F[+F-F]F 10.0
+X=[X]+F[-F+F]F 40.0
+
+2013-05-08 19:33:12.465021
+generation = 2
+X=[[[X]-FX]+F-FX]F 40.0
+X=[[[[[X]+FX]X]+]+F+F-FFX]F 40.0
+X=[[-FX[X]-FX]+F-FX]F 30.0
+X=[+F-FX]F 30.0
+X=[[[[X]-FX]+F-FX]+F-FX]F 40.0
+X=[[-FX]F] 30.0
+X=[+FX]-F-F[+F-F]F 30.0
+X=[[[X]-FX]+F-FX]F 30.0
+X=[+FX]-F-F[+F+F]F 10.0
+X=[[-F+FX]-F-F]F 10.0

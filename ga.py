@@ -198,7 +198,7 @@ class population:
         self.copy(1, i2)
 
         newfit = sorted(fit)
-        ind = 0  # 3 * self.size / 4
+        ind = 0  # self.size / 4
         self.cut = newfit[ind]
 
         i = 2
@@ -217,7 +217,6 @@ class population:
                     f = False
                     break
             if f:
-                print 'lllllllllllllllllllllllllll'
                 self.chromosoms_new[i] = self.random_rule()
         for l in range(0, self.size):
             self.copy2(l, l)
@@ -225,7 +224,7 @@ class population:
         for l in range(0, self.size):
             for m in range(l + 1, self.size):
                 if self.chromosoms[l] == self.chromosoms[m]:
-                    print "fucked"
+                    self.chromosoms_new[m] = self.random_rule()
 
         return self.chromosoms
 

@@ -26,8 +26,9 @@ import ga
 import thread
 from threading import Lock
 import time
-#import tkMessageBox as dialog
+import tkMessageBox as dialog
 import ttk
+from datetime import datetime
 
 
 class Application(tk.Frame):
@@ -48,7 +49,7 @@ class Application(tk.Frame):
         self.p = ga.population(10, 90, 30)
         self.fit = list()
         for i in range(0, 10):
-            self.fit.append(10)
+            self.fit.append(0.0)
 
         self.axiom = 'X'
         self.angle = 0.0
@@ -83,17 +84,36 @@ class Application(tk.Frame):
             self.tab_list.append(tb)
             self.tabs.add(self.tab_list[i], text="   " + str(i + 1) + "   ")
 
-        self.load_button = tk.Button(self, text='next generation',
+        self.next_button = tk.Button(self, text='next generation',
                                         command=self.next_gen)
 
-        self.load_button.grid(column=0, row=0,
+        self.next_button.grid(column=0, row=0,
+                                columnspan=4, sticky=tk.W + tk.E)
+
+        self.load_button = tk.Button(self, text='load rules',
+                                        command=self.load)
+
+        self.load_button.grid(column=0, row=1,
+                                columnspan=4, sticky=tk.W + tk.E)
+
+        self.save_button = tk.Button(self, text='save rules',
+                                        command=self.save)
+
+        self.save_button.grid(column=0, row=2,
                                 columnspan=4, sticky=tk.W + tk.E)
 
         self.content = tk.StringVar()
+        self.ln = tk.StringVar()
+        self.length_entry = tk.Entry(textvariable=self.ln)
+        self.length_entry.insert(0, '2.0')
         self.max_entry = tk.Entry(textvariable=self.content)
         self.max_entry.insert(0, '6')
         self.gen_entry = tk.Entry()
         self.gen_entry.insert(0, '0')
+
+        tk.Label(text="length of a line :").grid(column=0,
+                                                    row=7, sticky=tk.W)
+        self.length_entry.grid(column=0, row=8)
 
         tk.Label(text="maximum iterations :").grid(column=0,
                                                     row=9, sticky=tk.W)
@@ -224,33 +244,87 @@ class Application(tk.Frame):
         self.x_scale = 1
         self.y_scale = 1
 
+    def log(self):
+        try:
+            f = open('log', 'a')
+            f.write("\n" + str(datetime.now()) + "\n")
+            if self.gen_count == 0:
+                f.write("\n--NEW POPULATION--\n\n")
+            f.write("generation = " + str(self.gen_count) + "\n")
+            for i in range(0, 10):
+                s = "X=" + str(self.rules[i])
+                s = s + " " + str(self.fit[i]) + "\n"
+                f.write(s)
+            f.close()
+        except Exception:
+            dialog.showerror(title='ERROR !!', message='Invailed log file')
+
+    def load(self):
+        try:
+            f = open('rules', 'r')
+            cat = f.read()
+            f.close()
+            lst = cat.splitlines()
+            self.gen_count = int(lst[0])
+            self.gen_entry.delete(0, tk.END)
+            self.gen_entry.insert(0, str(self.gen_count))
+            self.r = list()
+            for i in range(1, 11):
+                self.r.append(lst[i])
+
+            self.rules = self.r[:]
+            dialog.showinfo(title='SUCCESS !!',
+                            message='new rules set loaded')
+        except Exception:
+            dialog.showerror(title='ERROR !!', message='Invailed "rules" file')
+
+    def save(self):
+        try:
+            f = open('rules', 'w')
+            f.write(str(self.gen_count) + "\n")
+            for i in range(0, 10):
+                f.write(self.rules[i] + "\n")
+
+            f.close()
+            dialog.showinfo(title='SUCCESS !!',
+                            message='rules are saved into "rules" file')
+        except Exception:
+            dialog.showerro(title='ERROR !!',
+                            message='can not create rules File')
+
     def vote(self, n):
-        text = self.content_list[n].get()
-        self.fit[n] = float(text)
+        v = float(self.content_list[n].get())
+        if v > 100:
+            v = 100
+        elif v < 0:
+            v = 0
+        self.fit[n] = v
 
     def start(self, n):
         if self.run[n] is False:
             self.run[n] = True
             try:
                 thread.start_new_thread(self.thread_func, (n, ))
-            except Exception, e:
-                print "Exception ", Exception, e
+            except Exception:
+                dialog.showerror(title='ERROR !!',
+                            message='can not start the thread')
         else:
             self.run[n] = False
-
-    def stop(self):
-        pass
 
     def next_gen(self):
         self.rules = self.p.new_gen(self.fit)
         self.gen_entry.delete(0, tk.END)
         self.gen_entry.insert(0, str(self.gen_count + 1))
+        self.log()
         self.gen_count = self.gen_count + 1
         for i in range(0, 10):
             self.fit[i] = 0.0
+            self.run[i] = False
 
     def thread_func(self, n):
 
+        text = self.ln.get()
+        self.length = float(text)
         self.l_sys[n] = l_system.l_system(self.axiom,
                                         self.x, self.y,
                                         600, 600,
@@ -284,7 +358,7 @@ class Application(tk.Frame):
                                         text=st,
                                         fill='white')
 
-            st = 'rule 1    = ' + str(self.rl[0][1])
+            st = 'F    = ' + str(self.rl[0][1])
             while len(st) < 50:
                 st = st + ' '
 
@@ -292,10 +366,10 @@ class Application(tk.Frame):
                                         text=st,
                                         fill='white')
 
-            st = 'rule 2    = ' + str(self.rl[1][1])
+            st = 'X    = ' + str(self.rl[1][1])
             while len(st) < 50:
                 st = st + ' '
-            print len(st)
+
             self.canvases[n].create_text(120, 60,
                                         text=st,
                                         fill='white')
@@ -315,9 +389,3 @@ class Application(tk.Frame):
 
             time.sleep(1)
         self.canvases[n].delete(tk.ALL)
-
-if __name__ == '__main__':
-
-    app = Application()
-    app.master.title('gen_l_viewer')
-    app.mainloop()
